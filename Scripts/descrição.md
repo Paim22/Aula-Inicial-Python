@@ -1,1 +1,0 @@
-Descrição da Pasta Scripts
