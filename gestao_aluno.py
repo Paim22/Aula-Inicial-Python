@@ -3,9 +3,11 @@ from tkinter import messagebox, ttk
 import sqlite3
 import subprocess
 
+#conexão com o banco de dados
 conn = sqlite3.connect('C:/Users/matheus.paim_onfly/Desktop/Faculdade/RAD/Banco_Python__RAD_BACKUP.db')
 cursor = conn.cursor()
 
+#definição de categoria por idade
 def obter_categorias_por_idade(idade):
     if idade >= 4 and idade <= 5:
         return ['Sub 5']
@@ -20,6 +22,7 @@ def obter_categorias_por_idade(idade):
     else:
         return []
 
+#configuração de conexão com outros códigos do sistema
 def obter_categorias():
     cursor.execute("SELECT Tipo_categoria FROM cadastro_categoria")
     return [categoria[0] for categoria in cursor.fetchall()]
@@ -86,6 +89,7 @@ def gestao_aluno():
     mensalidade_combobox.grid(row=4, column=3, pady=5)
     mensalidade_combobox['state'] = 'disabled'
 
+    #configuração da tabela presente no código
     columns = (
     "Nome", "Idade", "Matrícula", "Data de Nascimento", "Nome do Responsável", "Telefone", "Categoria", "Mensalidade")
     tabela = ttk.Treeview(janela_aluno, columns=columns, show='headings')
