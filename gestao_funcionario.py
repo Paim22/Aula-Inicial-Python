@@ -2,9 +2,11 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 import sqlite3
 
+#conexão com o banco de dados
 conn = sqlite3.connect('C:/Users/matheus.paim_onfly/Desktop/Faculdade/RAD/Banco_Python__RAD_BACKUP.db')
 cursor = conn.cursor()
 
+#configuração da tela principal
 def gestao_funcionario():
     janela_funcionario = tk.Toplevel()
     janela_funcionario.title("Gestão de Funcionário")
@@ -56,6 +58,7 @@ def gestao_funcionario():
 
     obter_salarios()
 
+    #configuração da tabela do código
     def adicionar_tabela():
         cursor.execute("INSERT INTO cadastrofuncionario (nome, idade, formacao, cpf, datanascimento, dataentrada, numero_celular) VALUES ( ?, ?, ?, ?, ?, ?, ?)",
                        (entry_nome.get(), entry_idade.get(), entry_formacao.get(), entry_cpf.get(), entry_nascimento.get(), entry_entrada.get(), entry_numero_celular.get()))
@@ -79,6 +82,7 @@ def gestao_funcionario():
         entry_numero_celular.delete(0, 'end')
         salario_combobox.set('')
 
+    #exclusão de funcionário
     def excluir_funcionario():
         selected_item = tabela.selection()
         if not selected_item:
@@ -91,6 +95,7 @@ def gestao_funcionario():
             carregar_tabela()
             messagebox.showinfo("Exclusão", "Funcionário excluído com sucesso!")
 
+    #edição de funcionário
     def editar_funcionario():
         selected_item = tabela.selection()
         if not selected_item:
@@ -146,6 +151,7 @@ def gestao_funcionario():
     tabela.heading("salario", text="Salário")
     tabela.heading("numero_celular", text="Número de Celular")
 
+    #configuração da barra horizontal da tabela
     tabela.place(x=50, y=300, width=700, height=200)
     scrollbar_x.config(command=tabela.xview)
 
