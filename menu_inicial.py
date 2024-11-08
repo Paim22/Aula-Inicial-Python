@@ -10,6 +10,7 @@ from gestao_funcionario import gestao_funcionario
 from gestao_salario import gestao_salario
 from gestao_mensalidade import gestao_mensalidade
 
+#conexão com o banco de dados
 conn = sqlite3.connect('C:/Users/matheus.paim_onfly/Desktop/Faculdade/RAD/Banco_Python__RAD_BACKUP.db')
 
 def abrir_tela_recuperacao():
@@ -58,6 +59,7 @@ def abrir_tela_recuperacao():
     botao_retornar = tk.Button(tela_recuperacao, text="Retornar para Tela de Login", command=retornar_login)
     botao_retornar.pack(pady=10)
 
+#função para realização de login no sistema
 def fazer_login(event=None):
     usuario = entry_login.get()
     senha = entry_senha.get()
@@ -123,6 +125,7 @@ def criar_novologin():
     botao_voltar = tk.Button(tela_novologin, text="Cancelar", command=lambda: [tela_novologin.destroy(), janela.deiconify()])
     botao_voltar.pack(pady=5)
 
+#configuração de layout do menu incial
 def abrir_menu_inicial():
     janela.withdraw()
     menu_inicial = tk.Toplevel()
