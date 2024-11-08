@@ -117,6 +117,7 @@ def gestao_aluno():
 
         entry_cpf.bind("<FocusOut>", validar_cpf)
 
+    #função para puxar categoria de acordo com idade
     def idade_preenchida(event):
         try:
             idade = int(entry_idade.get())
@@ -131,6 +132,7 @@ def gestao_aluno():
 
     entry_idade.bind("<FocusOut>", idade_preenchida)
 
+    #função para adicionar aluno no sistema
     def adicionar_aluno():
         nome = entry_nome.get()
         idade = entry_idade.get()
@@ -159,6 +161,7 @@ def gestao_aluno():
             except sqlite3.Error as e:
                 messagebox.showerror("Erro de Banco de Dados", f"Erro ao inserir dados: {e}")
 
+    #edição de aluno
     def alterar_aluno():
         try:
             selected_item = tabela.selection()[0]
@@ -210,6 +213,7 @@ def gestao_aluno():
         except IndexError:
             messagebox.showerror("Erro", "Selecione um aluno na tabela para alterar!")
 
+    #exclusão de aluno
     def excluir_aluno():
         try:
             selected_item = tabela.selection()[0]  # Seleciona o item atual
